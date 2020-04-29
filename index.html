@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<!-- HTML
+
+	# HYPERTEXT
+	texto q contém links para outros documentos.
+	
+	# MARKUP
+	texto conterá marcações chamadas de <tags>
+	
+	# LANGUAGE
+	Sintaxe especifíca para escrita.
+	
+    -->
+
+<html>
+<!-- head: São configurações da minha página -->
+
+<!-- head: Ofereci informações úteis para o navegador e pode introduzir outros códigos como JavaScritp ou CSS -->
+<head>
+    <!-- title: Título da página -->
+    <title>Doação de Sangue</title>
+
+    <!-- href: é um link para o arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- adicionar fontes através do site "https://fonts.google.com" -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- body: é o corpo da pág. É o conteúdo q fica visível para o usuário 
+    header: cabeçalho da página -->
+    <header>
+        <!-- adicionar uma imagem -> src: local da imagem | alt: alternativa, se a imagem não carregar, aparece o texto -->
+        <img
+            class="logo"
+            src="/logo.png" 
+            alt="Imagem DOE">
+        <h2>A sua doação importa</h2>
+        <p>Até 3 vidas com 1 doação</p>
+        <p>Mais de 38.000 doações são necessárias todos os dias</p>
+        <p>Apenas 1,9% da população brasileira , doa sangue</p>
+        <button>Quero ajudar</button>
+
+    </header>
+
+    <!-- section: é uma sessão e será nosso formulário -->
+    <section class="form hide">
+        <h2>Entre na lista de doadores</h2>
+        <form action="/" method="POST">
+            <!-- placeholder: utilizado para mostrar uma informação (texto), ajudando o usuário a identificar o que escrever dentro campo -->
+            <input type="text" name="name" placeholder="Nome Completo">
+            <input type="text" name="email" placeholder="E-mail">
+            <input type="text" name="sangue" placeholder="Tipo Sanguíneo">
+            <button>Quero Ajudar</button>
+        </form>
+    </section>
+
+    <!-- main: informação que ficará no meio (conteúdo central) -->
+    <main>
+        <h2>Últimos <span>doadores</span></h2>
+        <section class="doadores">
+    
+            <!-- div: é uma caixa ou container utilizado para agrupar conteúdos -->
+            <!-- estrutura de repetição -->
+
+            {% for doador in doadores %}
+                <div class="doador">
+                    <div class="sangue">{{doador.sangue}}</div>
+                    <p>{{doador.name}}</p>
+                </div>
+            {%endfor%}
+
+        </section>
+
+    </main>
+
+    <!-- footer: rodapé -->
+    <footer>👨‍🎓 Desenvolvido por Paulo Roberto 👨‍💻</footer>
+
+        <script src="/scripts.js"></script>
+</body>
+
+</html>

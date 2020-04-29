@@ -1,0 +1,231 @@
+/* CASCADING STYLESHEET */
+
+/* GLOBAL */
+ * {
+	/* corrigindo o comportamento padrão de toda página, para não ultrapassar os limites já definidos */
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+}
+
+body {
+	/* flex: todo conteúdo da página fica um ao lado do outro (tudo em linha) */
+	display: flex;
+	/* voltar p/ o fluxo normal de coluna */
+	flex-direction: column;
+
+	/* vh (view port height): 
+view port: é tudo q vc está venda na tela | height: é a altura da página */
+	height: 100vh;
+
+/* FONTES */
+	/*sans-serif: retira as dobrinha das letras e deixa arredondada */
+	font-family: 'Roboto', sans-serif;
+	background-color: #f9f9f9;
+}
+
+h1, h2 {
+	/* colocando a cor preta mais suave */
+	color: #000000cc;
+
+}
+
+/* TÍTULOS */
+header h1, 
+main h2 {
+	margin-bottom: 70px;
+}
+
+main h2 span {
+	color: #ff4f4f;
+}
+
+.form h2 {
+	/* alinhar o texto a direita */
+	text-align: right;
+	/* cor do texto */
+	color: #ffffffdd;
+	/* tamanho da fonte */
+	font-size: 18px;
+}
+
+/* ESTRUTURA */
+header,
+main,
+footer {
+	/* alinhamento de textos */
+	text-align: center;
+}
+
+header,
+.form,
+main {
+	/* espaçamento com margin */
+	/* auto: está aplicando a "margem automática" na direita e esquerda da página (sentido horário)*/
+	margin: 0 auto 70px auto;
+
+	/* Limites dos elementos na página */
+	width: 90%;
+	/* ao atingir os 500px, os 90% não será mais aplicado */
+	max-width: 500px;
+}
+
+/* HEADER */
+
+header button {
+	margin-top: 8px;
+	/* */
+	padding: 8px 16px;
+	border-radius: 4px;
+	/*tirar a borda do botão */
+	border: none;
+	/* cor do botão */
+	background-color: #ff4f4f;
+	/* cor da fonte do botão */
+	color: white;
+	/* deixar a fonte em negrito*/
+	font-weight: bold;
+}
+
+.logo {
+	/* largura máxima da imagem */
+	width: 120px;
+	/* espaçamento de 70px em cima e embaixo e nas laterais é 0 */
+	margin: 70px 0;
+}
+
+header p {
+	font-size: 14px;
+	
+}
+
+/* FORM */
+
+	/* Qdo colocamos section.form, estamos dando mais força para esse estilo, qdo 
+	colocamos .form, estamos dando menos força, ou seja, menos prioridade */
+section.form {
+	
+	display: grid;
+	/* criar colunas */
+	grid-template-columns: 1fr 1fr;
+	/* espaçamento do h2 do "form" */
+	grid-gap: 45px;
+	/* alinhar o texto ao centro */
+	align-items: center;
+	/*colando cor no formulário */
+	background-color: #ff4f4f;
+	padding: 16px 64px;
+	/* deixando o formulário arredondado */
+	border-radius: 6px;
+}
+
+form input,
+form button {
+	/*aplicar uma largura de 100%*/
+	width: 100%;
+	/*espaçamentos entre os campos do formulário */
+	margin-bottom: 4px;
+	/* preenchimento dos elementos */
+	padding: 8px 16px;
+	/* arredodar todas as bordas */
+	border-radius: 4px;
+	/* border: é a grossura da borda */
+	border: 1px #ffffff88 solid;
+}
+
+form input {
+	/* aplicar transparência apenas no input sem afetar o botão */
+	background-color: transparent;
+}
+
+form input::placeholder {
+	/*placeholder: funciona como um seletor chamado de "peceudo element"
+	 utiliza os :: para acessar o mesmo. É como se tivesse pegando o 
+	 placeholder de dentro do input */
+	color: #ffffffaa;
+}
+
+form button {
+	/* deixando a fonte do botão em negrito */
+	font-weight: bold;
+}
+
+/* MAIN */
+
+	/* colocando "main .doadores", estamos dizendo q o CSS só irá procurar a "class doadores" 
+	dentro do "main", ou seja, em forma de cascata (agrupando) */
+main .doadores {
+	/*display: é a maneira como o CSS vai mostrar os elementos na página */
+	display: grid;
+	/* Irá informar qts colunas eu tenho.
+ 	1fr: é uma fração, ou seja, deixar as colunas flexiveis na tela */
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.sangue {
+	color: #ff4f4f;
+	font-weight: bold;
+	font-size: 12px;
+	/* */
+	display: flex;
+	/* alinhar o flex acima */
+	align-items: center;
+	/* alinhar ao meio, no eixo "Y" */
+	justify-content: center;
+
+	position: relative;
+
+
+}
+
+.sangue::before {
+	/* criar um elemento "before" dentro da div "sangue" 
+	colocando um "content" vazio dentro do peceudo elemento */
+	content: "";
+	background-color: #ff4f4f11;
+	
+	width: 40px;
+	height: 40px;
+
+	position: absolute;
+	/* Fazer a gotinha */
+	border-radius: 50%;
+	/* apenas uma borda volta a ser quadrada */
+	border-top-right-radius: 0;
+	/*rotacionar a borda em -45 graus */
+	transform: rotate(-45deg)
+
+}
+
+.doador p {
+	margin-top: 24px;
+	margin-bottom: 64px;
+	font-size: 14px;
+}
+
+/*FOOTER*/
+
+/* ajustar o rodapé automaticamente na página */
+footer {
+	margin-top: auto;
+	/* preenchimento*/
+	padding-bottom: 16px;
+	font-size: 12px;
+
+	border: 1px solid #eee;
+}
+
+/* funcionalidades com javascript */
+
+section.form {
+	transition: all 300ms;
+}
+
+section.form.hide {
+	opacity: 0;
+	visibility: hidden;
+	height: 0;
+	margin-top: -70px;
+}
